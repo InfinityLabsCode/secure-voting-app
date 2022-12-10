@@ -32,6 +32,6 @@ jobs:
         run : |
           rm -rf node_modules/ 
           echo "Running Deployment..."
-          npm install && npm run build:development
+          npm run build
         env:
           CI : false
