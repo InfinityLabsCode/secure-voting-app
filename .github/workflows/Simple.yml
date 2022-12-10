@@ -22,12 +22,6 @@ jobs:
           npm run lint
         env:
           CI : false
-
-  deployment : 
-    name : Deployment
-    runs-on : ubuntu-latest
-    needs : [lintTest]
-    steps:
       - name : Deployment
         run : |
           rm -rf node_modules/ 
