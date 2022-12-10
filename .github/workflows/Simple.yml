@@ -31,4 +31,4 @@ jobs:
       - name : Deployment
         run : |
           echo "Running Deployment..."
-          npm install && CI=true npm run build:development
+          npm install && npm run build:development
