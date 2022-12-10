@@ -7,7 +7,7 @@ on:
 
 jobs:
   lintTest : 
-    name : Lint
+    name : Lint and deployment
     runs-on : ubuntu-latest
     steps:
       - name : Clone Repository
@@ -26,6 +26,6 @@ jobs:
         run : |
           rm -rf node_modules/ 
           echo "Running Deployment..."
-          npm run build
+          npm install && npm run build:development
         env:
           CI : false
