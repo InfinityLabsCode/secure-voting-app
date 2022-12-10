@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'PPNeueMachina';
+  src: url('/assets/fonts/PPN/PPNeueMachina-PlainRegular.otf');
+}
+
+@font-face {
+  font-family: 'PPNeueMachinaBold';
+  src: url('/assets/fonts/PPN/PPNeueMachina-PlainUltrabold.otf');
+}
+
+body {
+  font-family: 'PPNeueMachina';
+}
