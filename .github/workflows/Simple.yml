@@ -21,7 +21,7 @@ jobs:
           echo "Running Linting tests...."
           npm run lint
         env:
-          CI : true
+          CI : false
 
   deployment : 
     name : Deployment
@@ -30,5 +30,8 @@ jobs:
     steps:
       - name : Deployment
         run : |
+          rm -rf node_modules/ 
           echo "Running Deployment..."
           npm install && npm run build:development
+        env:
+          CI : false
