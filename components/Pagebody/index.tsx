@@ -1,7 +1,7 @@
 const index = () => {
   return (
     <div className="flex-auto">
-      <div className="max-w-3xl mx-auto pt-10 pb-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto pt-10 pb-12 px-8">
         <div className="text-center">
           <h1 className="text-2xl font-bold leading-7 sm:text-3xl sm:truncate text-gray-900 dark:text-gray-100">
             Create a Poll
@@ -22,9 +22,41 @@ const index = () => {
               <div className="description">
                 <label className="block text-sm	font-medium	label-color">Description </label>
                 <textarea
-                  id="message"
-                  rows="3"
-                  className="textarea  block p-2.5 w-full text-sm label-color bg-gray-50 rounded-lg border border-gray-300 focus:outline-none focus:shadow-outline"></textarea>
+                  className="textarea  block p-2.5 w-full text-sm label-color bg-white rounded-lg border border-gray-300 focus:outline-none focus:shadow-outline"
+                  rows={4}
+                />
+              </div>
+
+              <div className="answer-name">
+                <label className="block text-sm	font-medium	label-color"> Answer Options </label>
+                <input
+                  className="mt-1 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  type="text"
+                  placeholder="Option 1"
+                />
+                <input
+                  className="mt-2 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  type="text"
+                  placeholder="Option 2"
+                />
+                <button type="button" className="mt-2 border rounded label-color p-2 text-gray-700">
+                  + Add option
+                </button>
+              </div>
+              <div className="voting-area">
+                <label className="block text-sm	font-medium	label-color">Voting restrictions</label>
+                <input
+                  className="mt-1 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  type="text"
+                  placeholder="One vote per  wallet address"
+                />
+              </div>
+              <div className="py-3 border-t border-gray-200">
+                <div className="flex-shrink-0 mt-4">
+                  <a href="#" className="bg-indigo-600 text-white px-4 py-3 rounded-md">
+                    Create poll
+                  </a>
+                </div>
               </div>
             </div>
           </form>

@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 //Components
 import Header from '../components/Header/index';
 import Pagebody from '../components/Pagebody/index';
+import Fotter from '../components/Footer/index'
 
 const CreatePoll: NextPage = () => {
   useEffect(() => {
@@ -22,6 +23,7 @@ const CreatePoll: NextPage = () => {
       </Head>
       <Header />
       <Pagebody />
+      <Fotter />
     </>
 
   );
