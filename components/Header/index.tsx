@@ -1,7 +1,7 @@
 const index = () => {
   return (
     <header className="sticky top-0 z-40 bg-white dark:bg-gray-900 ring-1 ring-gray-300 dark:ring-gray-700 shadow-sm">
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 desktop:px-8">
+      <div className="max-w-7xl mx-auto px-2 mobile:px-4 desktop:px-8">
         <div className="flex justify-between h-16">
           <div className="flex px-2 desktop:px-0 truncate">
             <a href="#" className="flex-shrink-0 flex items-center text-gray-900 dark:text-[#0A0A2F]">
