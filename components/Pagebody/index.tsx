@@ -8,7 +8,7 @@ const index = () => {
           </h1>
           <p className="mt-2 text-sm text-[#0A0A2F]">Complete the below fields to create your poll.</p>
         </div>
-        <div className=" bg-white mt-8 px-4 mobile:p-6 py-5 border-t-4 border-orange-300 overflow-visible rounded-md border-x border border-[#e5e7eb] border-t-[#0a0a2f]">
+        <div className="bg-white mt-8 px-4 mobile:p-6 py-5 border-t-4 border-orange-300 overflow-visible rounded-md border-x border border-[#e5e7eb] border-t-[#0a0a2f]">
           <form className="mt-2 space-y-6" id="pollform" method="POST" action="/polls">
             <div className="space-y-6">
               <div className="title-name">
