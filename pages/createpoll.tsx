@@ -1,8 +1,11 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useEffect } from 'react';
 
 //Components
 import Header from '../components/Header/index';
+import Pagebody from '../components/Pagebody/index';
+import Fotter from '../components/Footer/index'
 
 const CreatePoll: NextPage = () => {
 
@@ -12,7 +15,10 @@ const CreatePoll: NextPage = () => {
         <title>SecurePoll</title>
       </Head>
       <Header />
+      <Pagebody />
+      <Fotter />
     </>
+
   );
 };
 
