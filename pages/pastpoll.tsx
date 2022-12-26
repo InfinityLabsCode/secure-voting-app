@@ -65,6 +65,19 @@ export default function pastpoll() {
                 </ul>
               </li>
             </ul>
+
+            <ul className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer mt-4">
+              <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">Others Election</li>
+              <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : 1950</li>
+              <li>
+                <ul className="space-x-20 content-center">
+                  <li className="flex text-[#079D0D] text-sm mt-1">
+                    <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#079D0D]"></span>
+                    Completed
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
