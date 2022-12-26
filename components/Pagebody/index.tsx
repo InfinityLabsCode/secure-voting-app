@@ -3,7 +3,7 @@ const index = () => {
     <div className="flex-auto">
       <div className="max-w-3xl mx-auto pt-10 pb-12 px-8">
         <div className="text-center">
-          <h1 className="text-2xl font-bold leading-7 mobile:text-3xl mobile:truncate text-[#0A0A2F] dark:text-gray-100">
+          <h1 className="text-2xl font-bold leading-7 mobile:text-3xl mobile:truncate text-[#0A0A2F]">
             Create a Poll
           </h1>
           <p className="mt-2 text-sm text-[#0A0A2F]">Complete the below fields to create your poll.</p>
@@ -34,7 +34,7 @@ const index = () => {
                   <input type="text" className="text-[#0A0A2F] border rounded w-full py-2 px-3 focus:outline-none focus:shadow-outline" name="option-1" id="option-1" placeholder="Option 1" />
                   <button
                     type="button"
-                    className="absolute inset-y-px right-px rounded-md pl-3 pr-3 bg-white dark:bg-gray-700"
+                    className="absolute inset-y-px right-px rounded-md pl-3 pr-3 bg-white"
                   >
                     <svg
                       className="h-5 w-5 text-gray-400"
@@ -51,7 +51,7 @@ const index = () => {
                   <input type="text" className="text-[#0A0A2F] border rounded w-full py-2 px-3 focus:outline-none focus:shadow-outline" name="option-2" id="option-2" placeholder="Option 2" />
                   <button
                     type="button"
-                    className="absolute inset-y-px right-px rounded-md pl-3 pr-3 bg-white dark:bg-gray-700"
+                    className="absolute inset-y-px right-px rounded-md pl-3 pr-3 bg-white"
                   >
                     <svg
                       className="h-5 w-5 text-gray-400"

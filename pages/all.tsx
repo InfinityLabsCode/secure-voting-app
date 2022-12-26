@@ -9,7 +9,7 @@ export default function All() {
           <div className="bg-white mt-8 mobile:p-6 p-5 border-t-4 border-orange-300 overflow-visible rounded-md border-x border border-[#e5e7eb] border-t-[#0a0a2f]">
             {/* start past polls area */}
             <div className="poll-title mb-4">
-              <h1 className="text-2xl font-bold leading-7 mobile:text-3xl mobile:truncate text-[#0A0A2F] dark:text-gray-100">
+              <h1 className="text-2xl font-bold leading-7 mobile:text-xl mobile:truncate text-[#0A0A2F]">
                 Past Polls
               </h1>
               <p className="mt-1 text-sm text-[#0A0A2F]">Below are the Past Polls create by the administrators:</p>
@@ -70,7 +70,7 @@ export default function All() {
             {/* start present polls area */}
 
             <div className="poll-title my-4">
-              <h1 className="text-2xl font-bold leading-7 mobile:text-3xl mobile:truncate text-[#0A0A2F] dark:text-gray-100">
+              <h1 className="text-2xl font-bold leading-7 mobile:text-xl mobile:truncate text-[#0A0A2F]">
                 Present Polls
               </h1>
               <p className="mt-1 text-sm text-[#0A0A2F]">Below are the Present polls create by the administrators:</p>
