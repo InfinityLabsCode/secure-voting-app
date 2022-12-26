@@ -21,7 +21,7 @@ export default function index() {
                 <ul className="space-x-20 content-center">
                   <li className="flex text-[#E7A808] text-sm mt-1">
                     <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#E7A808]"></span>
-                    Completed
+                    Onging
                   </li>
                 </ul>
               </li>
@@ -34,7 +34,7 @@ export default function index() {
                 <ul className="space-x-20 content-center">
                   <li className="flex text-[#E7A808] text-sm mt-1">
                     <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#E7A808]"></span>
-                    Completed
+                    Onging
                   </li>
                 </ul>
               </li>
@@ -47,7 +47,7 @@ export default function index() {
                 <ul className="space-x-20 content-center">
                   <li className="flex text-[#E7A808] text-sm mt-1">
                     <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#E7A808]"></span>
-                    Completed
+                    Onging
                   </li>
                 </ul>
               </li>
@@ -60,7 +60,20 @@ export default function index() {
                 <ul className="space-x-20 content-center">
                   <li className="flex text-[#E7A808] text-sm mt-1">
                     <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#E7A808]"></span>
-                    Completed
+                    Onging
+                  </li>
+                </ul>
+              </li>
+            </ul> 
+            
+            <ul className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer mt-4">
+              <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">Others Election</li>
+              <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : 1050</li>
+              <li>
+                <ul className="space-x-20 content-center">
+                  <li className="flex text-[#E7A808] text-sm mt-1">
+                    <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#E7A808]"></span>
+                    Onging
                   </li>
                 </ul>
               </li>

@@ -1,6 +1,6 @@
 import Footer from '../components/Footer/index';
 import Header from '../components/Header/index';
-export default function Adjust() {
+export default function All() {
   return (
     <>
       <Header />
@@ -83,7 +83,7 @@ export default function Adjust() {
                 <ul className="space-x-20 content-center">
                   <li className="flex text-[#E7A808] text-sm mt-1">
                     <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#E7A808]"></span>
-                    Completed
+                    Onging
                   </li>
                 </ul>
               </li>
@@ -96,7 +96,7 @@ export default function Adjust() {
                 <ul className="space-x-20 content-center">
                   <li className="flex text-[#E7A808] text-sm mt-1">
                     <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#E7A808]"></span>
-                    Completed
+                    Onging
                   </li>
                 </ul>
               </li>
@@ -109,7 +109,7 @@ export default function Adjust() {
                 <ul className="space-x-20 content-center">
                   <li className="flex text-[#E7A808] text-sm mt-1">
                     <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#E7A808]"></span>
-                    Completed
+                    Onging
                   </li>
                 </ul>
               </li>
@@ -122,7 +122,7 @@ export default function Adjust() {
                 <ul className="space-x-20 content-center">
                   <li className="flex text-[#E7A808] text-sm mt-1">
                     <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#E7A808]"></span>
-                    Completed
+                    Onging
                   </li>
                 </ul>
               </li>
