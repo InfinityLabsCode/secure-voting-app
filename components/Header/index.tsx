@@ -1,28 +1,28 @@
 const index = () => {
   return (
-    <header className="sticky top-0 z-40 bg-white dark:bg-gray-900 ring-1 ring-gray-300 dark:ring-gray-700 shadow-sm">
+    <header className="sticky top-0 z-40 bg-white  ring-1 ring-gray-300 shadow-sm">
       <div className="max-w-7xl mx-auto px-2 mobile:px-4 desktop:px-8">
         <div className="flex justify-between h-16">
           <div className="flex px-2 desktop:px-0 truncate">
-            <a href="#" className="flex-shrink-0 flex items-center text-gray-900 dark:text-[#0A0A2F]">
+            <a href="#" className="flex-shrink-0 flex items-center text-[#0A0A2F] text-3xl mobile:text-2xl font-bold">
               SecurePoll
             </a>
             <div className="hidden desktop:ml-8 desktop:flex desktop:space-x-8">
               <a
                 href="#"
-                className="border-transparent text-[#0A0A2F] dark:text-[#0A0A2F] hover:border-[#0A0A2F] hover:text-[#0A0A2F] dark:hover:text-[#0A0A2F] inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap"
+                className="border-transparent text-[#0A0A2F] hover:border-[#0A0A2F] hover:text-[#0A0A2F] inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap"
               >
                 Create Poll
               </a>
               <a
                 href="#"
-                className="border-transparent text-[#0A0A2F] dark:text-[#0A0A2F] hover:border-[#0A0A2F] hover:text-[#0A0A2F] dark:hover:text-[#0A0A2F] inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap"
+                className="border-transparent text-[#0A0A2F] hover:border-[#0A0A2F] hover:text-[#0A0A2F] inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap"
               >
                 Past Poll
               </a>
               <a
                 href="#"
-                className="border-transparent text-[#0A0A2F] dark:text-[#0A0A2F] hover:border-[#0A0A2F] hover:text-[#0A0A2F] dark:hover:text-[#0A0A2F] inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap"
+                className="border-transparent text-[#0A0A2F] hover:border-[#0A0A2F] hover:text-[#0A0A2F] inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium whitespace-nowrap"
               >
                 Present Poll
               </a>
@@ -31,7 +31,7 @@ const index = () => {
           <div className="flex items-center desktop:hidden">
             <button
               type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-[#0A0A2F] hover:text-[#0A0A2F] hover:bg-[#0A0A2F] dark:hover:text-[#0A0A2F] dark:hover:bg-[#0A0A2F] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+              className="inline-flex items-center justify-center p-2 rounded-md text-[#0A0A2F] hover:text-[#0A0A2F] hover:bg-[#0A0A2F]  focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
               aria-controls="mobile-menu"
             >
               <span className="sr-only">Open main menu</span>
@@ -65,13 +65,13 @@ const index = () => {
         </div>
       </div>
       <div className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right hidden">
-        <div className="rounded-lg shadow-lg ring-1 ring-gray-300 dark:ring-gray-700 dark:ring-gray-700 bg-white dark:bg-gray-900 divide-y-2 divide-gray-50 dark:divide-gray-700">
+        <div className="rounded-lg shadow-lg ring-1 ring-gray-300  bg-white divide-y-2 divide-gray-50 ">
           <div className="pt-5 pb-6 px-5">
             <div className="flex items-center justify-between flex-row-reverse">
               <div className="-mr-2">
                 <button
                   type="button"
-                  className="bg-white dark:bg-gray-800 rounded-md p-2 inline-flex items-center justify-center text-gray-400 dark:hover:text-gray-200 dark:hover:bg-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                  className="bg-white  rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
                 >
                   <span className="sr-only">Close menu</span>
                   <svg
@@ -87,7 +87,7 @@ const index = () => {
                 </button>
               </div>
               <div>
-                <a href="#" className="flex-shrink-0 flex items-center text-gray-900 dark:text-white">
+                <a href="#" className="flex-shrink-0 flex items-center text-gray-900">
                   SecurePoll
                 </a>
               </div>
@@ -96,23 +96,23 @@ const index = () => {
               <nav className="grid gap-y-6">
                 <a
                   href="#"
-                  className="-m-3 p-3 items-center rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:bg-opacity-50"
+                  className="-m-3 p-3 items-center rounded-md hover:bg-gray-50 "
                 >
-                  <span className="ml-3 text-base font-medium text-gray-900 dark:text-gray-200">Create Poll</span>
+                  <span className="ml-3 text-base font-medium text-gray-900">Create Poll</span>
                 </a>
 
                 <a
                   href="#"
-                  className="-m-3 p-3 items-center rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:bg-opacity-50"
+                  className="-m-3 p-3 items-center rounded-md hover:bg-gray-50 "
                 >
-                  <span className="ml-3 text-base font-medium text-gray-900 dark:text-gray-200">Past Poll</span>
+                  <span className="ml-3 text-base font-medium text-gray-900 ">Past Poll</span>
                 </a>
 
                 <a
                   href="#"
-                  className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:bg-opacity-50"
+                  className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
                 >
-                  <span className="ml-3 text-base font-medium text-gray-900 dark:text-gray-200">Present Poll</span>
+                  <span className="ml-3 text-base font-medium text-gray-900 ">Present Poll</span>
                 </a>
               </nav>
             </div>
