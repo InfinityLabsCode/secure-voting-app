@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
+  swcMinify: false,
   env: {
     REACT_APP_ENV: process.env.REACT_APP_ENV,
     REACT_APP_CHAIN_ID: process.env.REACT_APP_CHAIN_ID,
