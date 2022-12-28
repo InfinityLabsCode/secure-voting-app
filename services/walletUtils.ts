@@ -30,11 +30,12 @@ export const getEthereumAccounts = async (): Promise<string | undefined> => {
  */
 export const addEthereumChain = async (): Promise<boolean> => {
   try {
+    console.log(process.env.REACT_APP_CHAIN_ID);
     await window.ethereum.request({
       method: 'wallet_addEthereumChain',
       params: [
         {
-          chainId: ethers.utils.hexValue(process.env.REACT_APP_CHAIN_ID || 0),
+          chainId: process.env.REACT_APP_CHAIN_ID,
           rpcUrl: process.env.REACT_APP_RPC_URL,
         },
       ],
@@ -51,9 +52,10 @@ export const addEthereumChain = async (): Promise<boolean> => {
  */
 export const switchEthereumChain = async (): Promise<boolean> => {
   try {
+    console.log(process.env.REACT_APP_CHAIN_ID);
     await window.ethereum.request({
       method: 'wallet_switchEthereumChain',
-      params: [{ chainId: ethers.utils.hexValue(process.env.REACT_APP_CHAIN_ID || 0) }],
+      params: [{ chainId: process.env.REACT_APP_CHAIN_ID}],
     });
     return true;
   } catch (switchError: any) {
