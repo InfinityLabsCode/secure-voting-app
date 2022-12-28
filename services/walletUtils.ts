@@ -34,7 +34,7 @@ export const addEthereumChain = async (): Promise<boolean> => {
       method: 'wallet_addEthereumChain',
       params: [
         {
-          chainId: process.env.REACT_APP_CHAIN_ID,
+          chainId: ethers.utils.hexValue(process.env.REACT_APP_CHAIN_ID || 0),
           rpcUrl: process.env.REACT_APP_RPC_URL,
         },
       ],
@@ -53,7 +53,7 @@ export const switchEthereumChain = async (): Promise<boolean> => {
   try {
     await window.ethereum.request({
       method: 'wallet_switchEthereumChain',
-      params: [{ chainId: process.env.REACT_APP_CHAIN_ID }],
+      params: [{ chainId: ethers.utils.hexValue(process.env.REACT_APP_CHAIN_ID || 0) }],
     });
     return true;
   } catch (switchError: any) {
