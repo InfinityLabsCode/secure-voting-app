@@ -1,6 +1,6 @@
 const index = () => {
   return (
-    <header className="sticky top-0 z-40 bg-white  ring-1 ring-gray-300 shadow-sm">
+    <header className="sticky top-0 z-30 bg-white  ring-1 ring-gray-300 shadow-sm">
       <div className="max-w-7xl mx-auto px-2 mobile:px-4 desktop:px-8">
         <div className="flex justify-between h-16">
           <div className="flex px-2 desktop:px-0 truncate">

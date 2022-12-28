@@ -1,6 +1,11 @@
+
+import { useState } from 'react';
 import Footer from '../components/Footer/index';
 import Header from '../components/Header/index';
-export default function index() {
+import Modal from '../components/Modal/modal';
+
+export default function Presentpoll() {
+  const [openModal, setOpenModal] = useState(false);
   return (
     <>
       <Header />
@@ -9,12 +14,13 @@ export default function index() {
           <div className="bg-white mt-8 mobile:p-6 p-5 border-t-4 border-orange-300 overflow-visible rounded-md border-x border border-[#e5e7eb] border-t-[#0a0a2f]">
             <div className="poll-title mb-4">
               <h1 className="text-2xl font-bold leading-7 mobile:text-xl mobile:truncate text-[#0A0A2F] ">
-              Present Polls
+                Present Polls
               </h1>
               <p className="mt-1 text-sm text-[#0A0A2F]">Below are the Present polls create by the administrators:</p>
             </div>
 
-            <ul className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer">
+            <ul className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer"  onClick={() => setOpenModal(true)}>
+
               <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">CEO Election</li>
               <li className="text-right mobile:text-left mobile:text-xs  text-sm">User Voter : 1050</li>
               <li>
@@ -27,7 +33,7 @@ export default function index() {
               </li>
             </ul>
 
-            <ul className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer mt-4">
+            <ul className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer mt-4"  onClick={() => setOpenModal(true)}>
               <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">Manager Election</li>
               <li className="text-right mobile:text-left mobile:text-xs  text-sm ">User Voter : 1050</li>
               <li>
@@ -40,7 +46,7 @@ export default function index() {
               </li>
             </ul>
 
-            <ul className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer mt-4">
+            <ul className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer mt-4"  onClick={() => setOpenModal(true)}>
               <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">MD Election</li>
               <li className="text-right mobile:text-left mobile:text-xs  text-sm">User Voter : 1050</li>
               <li>
@@ -53,7 +59,8 @@ export default function index() {
               </li>
             </ul>
 
-            <ul className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer mt-4">
+            <ul className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer mt-4"  onClick={() => setOpenModal(true)}>
+
               <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">Others Election</li>
               <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : 1050</li>
               <li>
@@ -64,9 +71,9 @@ export default function index() {
                   </li>
                 </ul>
               </li>
-            </ul> 
+            </ul>
 
-            <ul className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer mt-4">
+            <ul className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer mt-4"  onClick={() => setOpenModal(true)}>
               <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">Others Election</li>
               <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : 1050</li>
               <li>
@@ -82,6 +89,8 @@ export default function index() {
         </div>
       </div>
       <Footer />
+
+      <Modal open={openModal} onClose={() => setOpenModal(false)} />
     </>
   );
 }
