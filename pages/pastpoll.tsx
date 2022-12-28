@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import Footer from '../components/Footer/index';
 import Header from '../components/Header/index';
@@ -67,7 +68,6 @@ export default function Pastpoll() {
                 </ul>
               </li>
             </ul>
-
             <ul
               className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer mt-4"
               onClick={() => setOpenModal(true)}

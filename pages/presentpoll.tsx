@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import Footer from '../components/Footer/index';
 import Header from '../components/Header/index';
@@ -5,7 +6,6 @@ import Modal from '../components/Modal/modal';
 
 export default function Presentpoll() {
   const [openModal, setOpenModal] = useState(false);
-
   return (
     <>
       <Header />
@@ -20,6 +20,7 @@ export default function Presentpoll() {
             </div>
 
             <ul className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer"  onClick={() => setOpenModal(true)}>
+
               <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">CEO Election</li>
               <li className="text-right mobile:text-left mobile:text-xs  text-sm">User Voter : 1050</li>
               <li>
@@ -59,6 +60,7 @@ export default function Presentpoll() {
             </ul>
 
             <ul className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer mt-4"  onClick={() => setOpenModal(true)}>
+
               <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">Others Election</li>
               <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : 1050</li>
               <li>
@@ -87,6 +89,7 @@ export default function Presentpoll() {
         </div>
       </div>
       <Footer />
+
       <Modal open={openModal} onClose={() => setOpenModal(false)} />
     </>
   );
