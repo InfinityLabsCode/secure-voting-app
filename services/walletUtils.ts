@@ -30,7 +30,6 @@ export const getEthereumAccounts = async (): Promise<string | undefined> => {
  */
 export const addEthereumChain = async (): Promise<boolean> => {
   try {
-    console.log(process.env.REACT_APP_CHAIN_ID);
     await window.ethereum.request({
       method: 'wallet_addEthereumChain',
       params: [
@@ -52,7 +51,6 @@ export const addEthereumChain = async (): Promise<boolean> => {
  */
 export const switchEthereumChain = async (): Promise<boolean> => {
   try {
-    console.log(process.env.REACT_APP_CHAIN_ID);
     await window.ethereum.request({
       method: 'wallet_switchEthereumChain',
       params: [{ chainId: process.env.REACT_APP_CHAIN_ID}],
