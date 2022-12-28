@@ -1,8 +1,20 @@
+import React,{useEffect} from 'react';
+import { useRouter } from "next/router"
+
+//Store
+import secureVoteStore from '../store';
 
 export default function Home() {
+  const router = useRouter();
+  const isLogin = secureVoteStore((state) => state.authStore.isLogin);
+
+  useEffect(() => {
+    if (!isLogin) {
+      router.push('/login')
+    }
+  }, [isLogin,router])
+
   return (
-    <div className='container m-auto'>
-      <h1 className="text-center text-[30px]">This is the voting system App</h1>
-    </div>
+    <></>
   )
 }

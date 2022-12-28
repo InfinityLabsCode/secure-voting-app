@@ -5,7 +5,7 @@ const index = () => {
         <div className="flex justify-between h-16">
           <div className="flex px-2 desktop:px-0 truncate">
             <a href="#" className="flex-shrink-0 flex items-center text-[#0A0A2F] text-3xl mobile:text-2xl font-bold">
-              SecurePoll
+              SecureVote
             </a>
             <div className="hidden desktop:ml-8 desktop:flex desktop:space-x-8">
               <a
