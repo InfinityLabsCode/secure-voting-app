@@ -1,4 +1,11 @@
-const Modal = ({ open, onClose }) => {
+import React from 'react';
+
+interface IModal{
+  open : boolean;
+  onClose : Function;
+}
+
+const Modal : React.FC<IModal> = ({ open , onClose }) => {
   if (!open) return null;
   return (
     <>
@@ -18,7 +25,7 @@ const Modal = ({ open, onClose }) => {
                 </p>
               </div>
               <div className="modal-closs font-bold">
-                <button className="w-full mt-1 text-gray-800 text-right" onClick={onClose}>
+                <button className="w-full mt-1 text-gray-800 text-right" onClick={()=>onClose()}>
                   X
                 </button>
               </div>
