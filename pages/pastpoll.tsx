@@ -1,10 +1,32 @@
 
-import { useState } from 'react';
+//Dependencies
+import React,{ useState,useEffect } from 'react';
+import { useRouter } from 'next/router';
+
+//Store
+import secureVoteStore from '../store';
+
+//Componenets
 import Footer from '../components/Footer/index';
 import Header from '../components/Header/index';
 import Modal from '../components/Modal/modal';
+
+
+
 export default function Pastpoll() {
   const [openModal, setOpenModal] = useState(false);
+  const router = useRouter();
+  const isLogin = secureVoteStore((state) => state.authStore.isLogin);
+
+	useEffect(
+		() => {
+			if (!isLogin) {
+				router.push('login');
+			}
+		},
+		[ isLogin, router ]
+	);
+
   return (
     <>
       <Header />

@@ -12,7 +12,7 @@ export interface IAuthStore {
 
 export const authStore = (set: any, get: any): IAuthStore => ({
   walletAddress: '',
-  isLogin: false,
+  isLogin: false,  
   signIn: async () => {
     const response = await walletConnect();
     if(!response.success)return;

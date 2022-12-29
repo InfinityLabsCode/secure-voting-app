@@ -1,4 +1,18 @@
-const index = () => {
+//Dependencies
+import React from 'react';
+
+//Store
+import secureVoteStore from '../../store';
+
+const Pagebody = () => {
+  
+  const title = secureVoteStore((state) => state.createPollStore.title);
+  const setTitle = secureVoteStore((state) => state.createPollStore.setTitle);
+  const description = secureVoteStore((state) => state.createPollStore.description);
+  const setDescription = secureVoteStore((state) => state.createPollStore.setDescription);
+  const proposals = secureVoteStore((state) => state.createPollStore.proposals);
+  const setProposals = secureVoteStore((state) => state.createPollStore.setProposals);
+
   return (
     <div className="flex-auto">
       <div className="max-w-3xl mx-auto pt-10 pb-12 px-8">
@@ -83,4 +97,4 @@ const index = () => {
     </div>
   );
 };
-export default index;
+export default Pagebody;

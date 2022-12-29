@@ -1,6 +1,28 @@
+//Dependencies
+import React,{useEffect} from 'react';
+import { useRouter } from 'next/router';
+
+//Components
 import Footer from '../components/Footer/index';
 import Header from '../components/Header/index';
+
+//Store
+import secureVoteStore from '../store';
+
 export default function All() {
+
+  const router = useRouter();
+  const isLogin = secureVoteStore((state) => state.authStore.isLogin);
+
+	useEffect(
+		() => {
+			if (!isLogin) {
+				router.push('login');
+			}
+		},
+		[ isLogin, router ]
+	);
+
   return (
     <>
       <Header />
