@@ -2,7 +2,7 @@ import React,{useEffect} from 'react';
 import { useRouter } from "next/router"
 
 //Store
-import secureVoteStore from '../store';
+import secureVoteStore from '../stores';
 
 export default function Home() {
   const router = useRouter();

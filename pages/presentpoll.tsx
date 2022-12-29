@@ -9,7 +9,7 @@ import Header from '../components/Header/index';
 import Modal from '../components/Modal/modal';
 
 //Store
-import secureVoteStore from '../store';
+import secureVoteStore from '../stores';
 
 export default function Presentpoll() {
   const [openModal, setOpenModal] = useState(false);

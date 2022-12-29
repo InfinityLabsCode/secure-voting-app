@@ -1,5 +1,5 @@
 // Utils
-import { showInfo } from '../utils/toast';
+import { showToast } from '../components/ToastMessage';
 import { switchEthereumChain, getEthereumAccounts } from './walletUtils';
 
 declare let window: any;
@@ -17,6 +17,7 @@ export const walletConnect = async () => {
       return { success: true, account: account };
     }
   }
-  showInfo('MetaMask is not installed. Please consider installing it: https://metamask.io/download.html');
+  const toastId = `metamaskError`;
+  showToast('error', 'Error', 'MetaMask is not installed. Please consider installing it: https://metamask.io/download.html', toastId);
   return { success: false, errorMessage: 'MetaMask is not installed' };
 };

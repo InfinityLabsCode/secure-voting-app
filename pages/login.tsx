@@ -1,20 +1,23 @@
 //Dependencies
-import React,{useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 //Store
-import secureVoteStore from '../store';
+import secureVoteStore from '../stores';
 
 export default function Login() {
-  const router = useRouter();
-  const signIn = secureVoteStore((state) => state.authStore.signIn);
-  const isLogin = secureVoteStore((state) => state.authStore.isLogin);
+	const router = useRouter();
+	const signIn = secureVoteStore((state) => state.authStore.signIn);
+	const isLogin = secureVoteStore((state) => state.authStore.isLogin);
 
-  useEffect(() => {
-    if (isLogin) {
-      router.push('/all')
-    }
-  }, [isLogin,router])
+	useEffect(
+		() => {
+			if (isLogin) {
+				router.push('/all');
+			}
+		},
+		[ isLogin, router ]
+	);
 
 	return (
 		<div className="bg-black min-h-screen flex flex-col">
@@ -32,7 +35,7 @@ export default function Login() {
 							<button
 								type="button"
 								className="h-12 w-full px-5 rounded-sm text-xs leading-10	font-black text-white"
-                onClick={()=>signIn()}
+								onClick={() => signIn()}
 							>
 								<picture>
 									<img

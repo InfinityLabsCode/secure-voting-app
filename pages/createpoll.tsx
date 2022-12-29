@@ -9,12 +9,14 @@ import Pagebody from '../components/Pagebody/index';
 import Fotter from '../components/Footer/index'
 
 //Store
-import secureVoteStore from '../store';
+import secureVoteStore from '../stores';
+import Loader from '../components/Loader';
 
 
 const CreatePoll: NextPage = () => {
   const router = useRouter();
   const isLogin = secureVoteStore((state) => state.authStore.isLogin);
+
 
 	useEffect(
 		() => {
@@ -27,12 +29,10 @@ const CreatePoll: NextPage = () => {
 
   return (
     <>
-      <Head>
-        <title>SecurePoll</title>
-      </Head>
       <Header />
       <Pagebody />
       <Fotter />
+      <Loader />
     </>
 
   );

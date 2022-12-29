@@ -7,7 +7,7 @@ import Footer from '../components/Footer/index';
 import Header from '../components/Header/index';
 
 //Store
-import secureVoteStore from '../store';
+import secureVoteStore from '../stores';
 
 export default function All() {
 

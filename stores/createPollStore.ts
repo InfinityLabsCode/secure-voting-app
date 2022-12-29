@@ -2,7 +2,7 @@
 import { walletConnect } from '../services/walletConnection';
 
 //Store
-import { ISecureVoteStore } from './index';
+import secureVoteStore, { ISecureVoteStore } from './index';
 
 export interface ICreatePollStore {
   title: string;
@@ -10,29 +10,31 @@ export interface ICreatePollStore {
   description : string;
   setDescription : (value : string) => void;
   proposals : string[],
-  setProposals : (value : string) => void;
+  setProposals : (value : string , index : number) => void;
 }
 
 export const createPollStore = (set: any, get: any): ICreatePollStore => ({
   title: '',
   description: '',
   proposals : [],
-  setTitle: async (value : string) => {
+  setTitle: (value : string) => {
     set((state: ISecureVoteStore) => ({
       ...state,
       createPollStore: { ...state.createPollStore, title : value },
     }));
   },
-  setDescription: async (value : string) => {
+  setDescription: (value : string) => {
     set((state: ISecureVoteStore) => ({
       ...state,
-      createPollStore: { ...state.createPollStore, setDescription : value },
+      createPollStore: { ...state.createPollStore, description : value },
     }));
   },
-  setProposals: async (value : string) => {
+  setProposals: (value : string, index : number) => {
+    const oldProposals = secureVoteStore.getState().createPollStore.proposals;
+    oldProposals[index] = value;
     set((state: ISecureVoteStore) => ({
       ...state,
-      createPollStore: { ...state.createPollStore, proposals : [...state.createPollStore.proposals,value] },
+      createPollStore: { ...state.createPollStore, proposals : oldProposals },
     }));
-  }
+  },
 });

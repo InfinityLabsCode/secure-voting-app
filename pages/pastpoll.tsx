@@ -4,7 +4,7 @@ import React,{ useState,useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 //Store
-import secureVoteStore from '../store';
+import secureVoteStore from '../stores';
 
 //Componenets
 import Footer from '../components/Footer/index';
