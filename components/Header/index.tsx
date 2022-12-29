@@ -1,11 +1,13 @@
 //Dependencies
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
 //Store
 import secureVoteStore from '../../stores';
 
 const Header = () => {
+
+	const [showMobile,setShowMobile] = useState<boolean>(false);
 	const router = useRouter();
 	const walletAddress = secureVoteStore((state) => state.authStore.walletAddress);
 	const clearAuth = secureVoteStore((state) => state.authStore.clearAuth);
@@ -44,6 +46,7 @@ const Header = () => {
 					</div>
 					<div className="flex items-center desktop:hidden">
 						<button
+						  onClick={() => setShowMobile(true)}
 							type="button"
 							className="inline-flex items-center justify-center p-2 rounded-md text-[#0A0A2F] hover:text-[#0A0A2F] hover:bg-[#0A0A2F]  focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
 							aria-controls="mobile-menu"
@@ -99,12 +102,13 @@ const Header = () => {
 					</div>
 				</div>
 			</div>
-			<div className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right hidden">
+			<div className={`absolute top-0 inset-x-0 p-2 transition transform origin-top-right ${!showMobile ? 'hidden' : ''}`}>
 				<div className="rounded-lg shadow-lg ring-1 ring-gray-300  bg-white divide-y-2 divide-gray-50 ">
 					<div className="pt-5 pb-6 px-5">
 						<div className="flex items-center justify-between flex-row-reverse">
 							<div className="-mr-2">
 								<button
+								  onClick={()=> setShowMobile(false)}
 									type="button"
 									className="bg-white  rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
 								>
