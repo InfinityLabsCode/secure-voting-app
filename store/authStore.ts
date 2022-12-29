@@ -22,6 +22,3 @@ export const authStore = (set: any, get: any): IAuthStore => ({
     }));
   }
 });
-//
-//
-//

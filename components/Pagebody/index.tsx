@@ -69,14 +69,6 @@ const index = () => {
                   + Add option
                 </button>
               </div>
-              <div className="voting-area">
-                <label className="block text-sm	font-medium	text-[#0A0A2F]">Voting restrictions</label>
-                <input
-                  className="mt-1 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  type="text"
-                  placeholder="One vote per  wallet address"
-                />
-              </div>
               <div className="py-3 border-t border-gray-200">
                 <div className="flex-shrink-0 mt-4">
                   <a href="#" className=" bg-[#0a0a2f] text-white px-4 py-3 rounded-md">
