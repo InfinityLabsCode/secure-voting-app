@@ -5,11 +5,10 @@ import { useRouter } from 'next/router';
 //Store
 import secureVoteStore from '../../store';
 
-
 const Header = () => {
 	const router = useRouter();
 	const walletAddress = secureVoteStore((state) => state.authStore.walletAddress);
-
+	const clearAuth = secureVoteStore((state) => state.authStore.clearAuth);
 
 	return (
 		<header className="sticky top-0 z-30 bg-white  ring-1 ring-gray-300 shadow-sm">
@@ -82,8 +81,14 @@ const Header = () => {
 							</svg>
 						</button>
 					</div>
-					<div className="hidden desktop:ml-4 desktop:flex desktop:items-center">
-						<a href="#" className="button is-transparent text-[#0A0A2F]">
+					<div className="cursor-pointer hidden desktop:ml-4 desktop:flex desktop:items-center">
+						<a
+							onClick={() => {
+								clearAuth();
+								router.push('login');
+							}}
+							className="button is-transparent text-[#0A0A2F]"
+						>
 							Connected Wallet:-{' '}
 							{walletAddress.length &&
 								`${walletAddress.substring(0, 5)}...${walletAddress.substring(

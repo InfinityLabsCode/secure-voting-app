@@ -17,7 +17,7 @@ export default function Login() {
   }, [isLogin,router])
 
 	return (
-		<div className="bg-gray-100 min-h-screen flex flex-col">
+		<div className="bg-black min-h-screen flex flex-col">
 			<div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
 				<div className="login-box py-2 rounded shadow-md w-full text-center text-white bg-[#0a0a2f]">
 					<div className="login-log font-bold uppercase tracking-wide text-3xl border-b	border-slate-600 py-8">
