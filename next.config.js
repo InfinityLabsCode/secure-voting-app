@@ -17,7 +17,7 @@ const nextConfig = {
   assetPrefix: process.env.ASSET_PREFIX,
   images: {
     loader: 'imgix',
-    path: '',
+    path: '/',
   },
 };
 
