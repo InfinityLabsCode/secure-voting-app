@@ -62,7 +62,7 @@ const MessageDetails = (
 ) => {
 	return (
 		<div className="flex flex-col">
-			{type === 'processing' && <div className={`text-white text-[16px]`}>{label}</div>}
+			{type === 'processing' && <div className={`text-primary text-[16px]`}>{label}</div>}
 			{type === 'success' && <div className={`text-success text-[16px]`}>{label}</div>}
 			{type === 'congratulation' && <div className={`text-primary text-[16px]`}>{label}</div>}
 			{type === 'error' && <div className={`text-error text-[16px]`}>{label}</div>}

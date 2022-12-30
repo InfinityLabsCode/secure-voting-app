@@ -8,7 +8,6 @@ import { createNewPoll } from '../../services/createNewPoll';
 import secureVoteStore from '../../stores';
 import { showToast, toastUpdate } from '../ToastMessage';
 
-
 interface ISingleOption {
 	optionNumber: number;
 	addText: Function;
@@ -38,14 +37,22 @@ const Pagebody = () => {
 	const description = secureVoteStore((state) => state.createPollStore.description);
 	const setDescription = secureVoteStore((state) => state.createPollStore.setDescription);
 	const proposals = secureVoteStore((state) => state.createPollStore.proposals);
+	const setIsLoading = secureVoteStore((state) => state.uiStore.setIsLoading);
 	const setProposals = secureVoteStore((state) => state.createPollStore.setProposals);
 
-	const handleCreatePoll = async () =>{
-		const toastId = `createPoll-1`;
-		await showToast('processing', 'Processing', 'Please wait...', toastId);
-		await createNewPoll({title,description,proposals});
-		await toastUpdate(toastId, 'success', 'Success' ,'Creating poll is completed!');
-	}
+	const handleCreatePoll = async () => {
+		setIsLoading(true);
+		const toastId = `createPoll`;
+		showToast('processing', 'Processing', 'Please wait...', toastId);
+		const response = await createNewPoll({ title, description, proposals } , optionNumber);
+		if (!response.success) {
+			toastUpdate(toastId, 'error', 'Error', response.errorMessage as string);
+			setIsLoading(false);
+		} else {
+			toastUpdate(toastId, 'success', 'Completed', 'Creating new poll is initiated!');
+			setIsLoading(false);
+		}
+	};
 
 	return (
 		<div className="flex-auto">

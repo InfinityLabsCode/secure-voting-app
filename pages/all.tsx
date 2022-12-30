@@ -13,6 +13,9 @@ export default function All() {
 
   const router = useRouter();
   const isLogin = secureVoteStore((state) => state.authStore.isLogin);
+  const setIsLoading = secureVoteStore((state) => state.uiStore.setIsLoading);
+  const getAllStatisticsList = secureVoteStore((state) => state.statisticsStore.getAllStatisticsList);
+  const allStatisticsList = secureVoteStore((state) => state.statisticsStore.allStatisticsList);
 
 	useEffect(
 		() => {
@@ -22,6 +25,16 @@ export default function All() {
 		},
 		[ isLogin, router ]
 	);
+
+  useEffect(()=>{
+    (async()=>{
+      if(isLogin){
+        setIsLoading(true);
+        await getAllStatisticsList();
+        setIsLoading(false);
+      }
+    })();
+  },[isLogin,setIsLoading,getAllStatisticsList]);
 
   return (
     <>

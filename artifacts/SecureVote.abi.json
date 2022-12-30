@@ -1,0 +1,75 @@
+[
+  { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
+  {
+    "inputs": [
+      { "internalType": "string", "name": "_electionName", "type": "string" },
+      { "internalType": "string", "name": "_electionDescription", "type": "string" },
+      { "internalType": "string[]", "name": "_proposalsName", "type": "string[]" }
+    ],
+    "name": "createNewElection",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "_index", "type": "uint256" }],
+    "name": "endingVoting",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getStatisticsOfAllVote",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "string", "name": "name", "type": "string" },
+          { "internalType": "string", "name": "description", "type": "string" },
+          { "internalType": "uint256", "name": "voteCounted", "type": "uint256" },
+          { "internalType": "bool", "name": "voteEnded", "type": "bool" },
+          { "internalType": "string", "name": "winningProposalName", "type": "string" }
+        ],
+        "internalType": "struct SecureVote.SingleElectionStatistics[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_index", "type": "uint256" },
+      { "internalType": "address", "name": "_voter", "type": "address" }
+    ],
+    "name": "giveRightToVote",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_index", "type": "uint256" },
+      { "internalType": "uint256", "name": "_proposal", "type": "uint256" }
+    ],
+    "name": "giveVote",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "_index", "type": "uint256" }],
+    "name": "winningProposal",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

@@ -15,6 +15,8 @@ export default function Presentpoll() {
   const [openModal, setOpenModal] = useState(false);
   const router = useRouter();
   const isLogin = secureVoteStore((state) => state.authStore.isLogin);
+  const getAllStatisticsList = secureVoteStore((state) => state.statisticsStore.getAllStatisticsList);
+  const setIsLoading = secureVoteStore((state) => state.uiStore.setIsLoading);
 
 	useEffect(
 		() => {
@@ -24,6 +26,16 @@ export default function Presentpoll() {
 		},
 		[ isLogin, router ]
 	);
+
+  useEffect(()=>{
+    (async()=>{
+      if(isLogin){
+        setIsLoading(true);
+        await getAllStatisticsList();
+        setIsLoading(false);
+      }
+    })();
+  },[isLogin,setIsLoading,getAllStatisticsList]);
 
   return (
     <>
