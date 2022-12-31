@@ -10,6 +10,7 @@ import secureVoteStore from '../stores';
 import Footer from '../components/Footer/index';
 import Header from '../components/Header/index';
 import Modal from '../components/Modal/modal';
+import Popup from '../components/Popup/popup';
 
 
 
@@ -45,6 +46,7 @@ export default function Pastpoll() {
     <>
       <Header />
       <Modal open={openModal} onClose={() => setOpenModal(false)} />
+      <Popup />
       <div className="flex-auto">
         <div className="max-w-3xl mx-auto pt-10 pb-12 px-8">
           <div className="bg-white mt-8 mobile:p-6 p-5 border-t-4 border-orange-300 overflow-visible rounded-md border-x border border-[#e5e7eb] border-t-[#0a0a2f]">
