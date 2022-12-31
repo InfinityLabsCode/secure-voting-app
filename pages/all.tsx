@@ -1,5 +1,5 @@
 //Dependencies
-import React,{useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 //Components
@@ -8,33 +8,38 @@ import Header from '../components/Header/index';
 
 //Store
 import secureVoteStore from '../stores';
+import { ISinglePoll } from '../models/allModels';
+import Loader from '../components/Loader';
 
 export default function All() {
 
   const router = useRouter();
   const isLogin = secureVoteStore((state) => state.authStore.isLogin);
   const setIsLoading = secureVoteStore((state) => state.uiStore.setIsLoading);
-  const getAllStatisticsList = secureVoteStore((state) => state.statisticsStore.getAllStatisticsList);
-  const allStatisticsList = secureVoteStore((state) => state.statisticsStore.allStatisticsList);
+  const isLoading = secureVoteStore((state) => state.uiStore.isLoading);
+  const getAllPollList = secureVoteStore((state) => state.statisticsStore.getAllPollList);
+  const pastPolls = secureVoteStore((state) => state.statisticsStore.pastPolls);
+  const presentPolls = secureVoteStore((state) => state.statisticsStore.presentPolls);
 
-	useEffect(
-		() => {
-			if (!isLogin) {
-				router.push('login');
-			}
-		},
-		[ isLogin, router ]
-	);
 
-  useEffect(()=>{
-    (async()=>{
-      if(isLogin){
+  useEffect(
+    () => {
+      if (!isLogin) {
+        router.push('login');
+      }
+    },
+    [isLogin, router]
+  );
+
+  useEffect(() => {
+    (async () => {
+      if (isLogin) {
         setIsLoading(true);
-        await getAllStatisticsList();
+        await getAllPollList();
         setIsLoading(false);
       }
     })();
-  },[isLogin,setIsLoading,getAllStatisticsList]);
+  }, [isLogin, setIsLoading, getAllPollList]);
 
   return (
     <>
@@ -47,126 +52,55 @@ export default function All() {
               <h1 className="text-2xl font-bold leading-7 mobile:text-xl mobile:truncate text-[#0A0A2F]">
                 Past Polls
               </h1>
-              <p className="mt-1 text-sm text-[#0A0A2F]">Below are the Past Polls create by the administrators:</p>
+              <p className="mt-1 text-sm text-[#0A0A2F]">Below are the Past Polls created by the administrators:</p>
             </div>
 
-            <ul className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer">
-              <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">CEO Election</li>
-              <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : 1205</li>
-              <li>
-                <ul className="space-x-20 content-center">
-                  <li className="flex text-[#079D0D] text-sm mt-1">
-                    <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#079D0D]"></span>
-                    Completed
-                  </li>
-                </ul>
-              </li>
-            </ul>
+            {!isLoading && pastPolls.length && pastPolls.map((item: ISinglePoll, index: number) => (
+              <ul key={index} className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer">
+                <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">{item?.name}</li>
+                <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : {item?.voteCounted}</li>
+                <li>
+                  <ul className="space-x-20 content-center">
+                    <li className="flex text-[#079D0D] text-sm mt-1">
+                      <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#079D0D]"></span>
+                      Completed
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            ))}
 
-            <ul className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer mt-4">
-              <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">Manager Election</li>
-              <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : 1250</li>
-              <li>
-                <ul className="space-x-20 content-center">
-                  <li className="flex text-[#079D0D] text-sm mt-1">
-                    <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#079D0D]"></span>
-                    Completed
-                  </li>
-                </ul>
-              </li>
-            </ul>
-
-            <ul className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer mt-4">
-              <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">MD Election</li>
-              <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : 1850</li>
-              <li>
-                <ul className="space-x-20 content-center">
-                  <li className="flex text-[#079D0D] text-sm mt-1">
-                    <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#079D0D]"></span>
-                    Completed
-                  </li>
-                </ul>
-              </li>
-            </ul>
-
-            <ul className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer mt-4">
-              <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">Others Election</li>
-              <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : 1950</li>
-              <li>
-                <ul className="space-x-20 content-center">
-                  <li className="flex text-[#079D0D] text-sm mt-1">
-                    <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#079D0D]"></span>
-                    Completed
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            {/* end past polls area */}
-            {/* start present polls area */}
+            {!isLoading && !pastPolls.length ? <span>No past poll available!</span> : ''}
 
             <div className="poll-title my-4">
               <h1 className="text-2xl font-bold leading-7 mobile:text-xl mobile:truncate text-[#0A0A2F]">
                 Present Polls
               </h1>
-              <p className="mt-1 text-sm text-[#0A0A2F]">Below are the Present polls create by the administrators:</p>
+              <p className="mt-1 text-sm text-[#0A0A2F]">Below are the Present polls created by the administrators:</p>
             </div>
 
-            <ul className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer">
-              <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">CEO Election</li>
-              <li className="text-right mobile:text-left mobile:text-xs  text-sm">User Voter : 1050</li>
-              <li>
-                <ul className="space-x-20 content-center">
-                  <li className="flex text-[#E7A808] text-sm mt-1">
-                    <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#E7A808]"></span>
-                    Onging
-                  </li>
-                </ul>
-              </li>
-            </ul>
+            {!isLoading && presentPolls.length && presentPolls.map((item: ISinglePoll, index: number) => (
+              <ul key={index} className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer">
+                <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">{item?.name}</li>
+                <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : {item?.voteCounted}</li>
+                <li>
+                  <ul className="space-x-20 content-center">
+                    <li className="flex text-[#E7A808] text-sm mt-1">
+                      <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#E7A808]"></span>
+                      Onging
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            ))}
 
-            <ul className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer mt-4">
-              <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">Manager Election</li>
-              <li className="text-right mobile:text-left mobile:text-xs  text-sm ">User Voter : 1050</li>
-              <li>
-                <ul className="space-x-20 content-center">
-                  <li className="flex text-[#E7A808] text-sm mt-1">
-                    <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#E7A808]"></span>
-                    Onging
-                  </li>
-                </ul>
-              </li>
-            </ul>
+          {!isLoading && !presentPolls.length ? <span>No present poll available!</span> : ''}
 
-            <ul className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer mt-4">
-              <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">MD Election</li>
-              <li className="text-right mobile:text-left mobile:text-xs  text-sm">User Voter : 1050</li>
-              <li>
-                <ul className="space-x-20 content-center">
-                  <li className="flex text-[#E7A808] text-sm mt-1">
-                    <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#E7A808]"></span>
-                    Onging
-                  </li>
-                </ul>
-              </li>
-            </ul>
-
-            <ul className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer mt-4">
-              <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">Others Election</li>
-              <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : 1050</li>
-              <li>
-                <ul className="space-x-20 content-center">
-                  <li className="flex text-[#E7A808] text-sm mt-1">
-                    <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#E7A808]"></span>
-                    Onging
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            {/* end present polls area */}
           </div>
         </div>
       </div>
       <Footer />
+      <Loader />
     </>
   );
 }

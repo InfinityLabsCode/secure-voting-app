@@ -6,7 +6,8 @@ import { useState,useEffect } from 'react';
 //Componenets
 import Footer from '../components/Footer/index';
 import Header from '../components/Header/index';
-import Modal from '../components/Modal/modal';
+import { ISinglePoll } from '../models/allModels';
+import ChoosePopup from '../components/ChoosePopup/popup';
 
 //Store
 import secureVoteStore from '../stores';
@@ -15,8 +16,11 @@ export default function Presentpoll() {
   const [openModal, setOpenModal] = useState(false);
   const router = useRouter();
   const isLogin = secureVoteStore((state) => state.authStore.isLogin);
-  const getAllStatisticsList = secureVoteStore((state) => state.statisticsStore.getAllStatisticsList);
+  const getAllPollList = secureVoteStore((state) => state.statisticsStore.getAllPollList);
+  const presentPolls = secureVoteStore((state) => state.statisticsStore.presentPolls);
   const setIsLoading = secureVoteStore((state) => state.uiStore.setIsLoading);
+  const isLoading = secureVoteStore((state) => state.uiStore.isLoading);
+  const setIsShowChoosePopup = secureVoteStore((state) => state.uiStore.setIsShowChoosePopup);
 
 	useEffect(
 		() => {
@@ -31,11 +35,11 @@ export default function Presentpoll() {
     (async()=>{
       if(isLogin){
         setIsLoading(true);
-        await getAllStatisticsList();
+        await getAllPollList();
         setIsLoading(false);
       }
     })();
-  },[isLogin,setIsLoading,getAllStatisticsList]);
+  },[isLogin,setIsLoading,getAllPollList]);
 
   return (
     <>
@@ -50,78 +54,28 @@ export default function Presentpoll() {
               <p className="mt-1 text-sm text-[#0A0A2F]">Below are the Present polls create by the administrators:</p>
             </div>
 
-            <ul className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer"  onClick={() => setOpenModal(true)}>
+            {!isLoading && presentPolls.length && presentPolls.map((item: ISinglePoll, index: number) => (
+              <ul key={index} className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer" onClick={() => setIsShowChoosePopup(true)}>
+                <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">{item?.name}</li>
+                <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : {item?.voteCounted}</li>
+                <li>
+                  <ul className="space-x-20 content-center">
+                    <li className="flex text-[#E7A808] text-sm mt-1">
+                      <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#E7A808]"></span>
+                      Onging
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            ))}
+            {!isLoading && !presentPolls.length ? <span>No present poll available!</span> : ''}
 
-              <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">CEO Election</li>
-              <li className="text-right mobile:text-left mobile:text-xs  text-sm">User Voter : 1050</li>
-              <li>
-                <ul className="space-x-20 content-center">
-                  <li className="flex text-[#E7A808] text-sm mt-1">
-                    <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#E7A808]"></span>
-                    Onging
-                  </li>
-                </ul>
-              </li>
-            </ul>
 
-            <ul className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer mt-4"  onClick={() => setOpenModal(true)}>
-              <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">Manager Election</li>
-              <li className="text-right mobile:text-left mobile:text-xs  text-sm ">User Voter : 1050</li>
-              <li>
-                <ul className="space-x-20 content-center">
-                  <li className="flex text-[#E7A808] text-sm mt-1">
-                    <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#E7A808]"></span>
-                    Onging
-                  </li>
-                </ul>
-              </li>
-            </ul>
-
-            <ul className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer mt-4"  onClick={() => setOpenModal(true)}>
-              <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">MD Election</li>
-              <li className="text-right mobile:text-left mobile:text-xs  text-sm">User Voter : 1050</li>
-              <li>
-                <ul className="space-x-20 content-center">
-                  <li className="flex text-[#E7A808] text-sm mt-1">
-                    <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#E7A808]"></span>
-                    Onging
-                  </li>
-                </ul>
-              </li>
-            </ul>
-
-            <ul className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer mt-4"  onClick={() => setOpenModal(true)}>
-
-              <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">Others Election</li>
-              <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : 1050</li>
-              <li>
-                <ul className="space-x-20 content-center">
-                  <li className="flex text-[#E7A808] text-sm mt-1">
-                    <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#E7A808]"></span>
-                    Onging
-                  </li>
-                </ul>
-              </li>
-            </ul>
-
-            <ul className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer mt-4"  onClick={() => setOpenModal(true)}>
-              <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">Others Election</li>
-              <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : 1050</li>
-              <li>
-                <ul className="space-x-20 content-center">
-                  <li className="flex text-[#E7A808] text-sm mt-1">
-                    <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#E7A808]"></span>
-                    Onging
-                  </li>
-                </ul>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
       <Footer />
-
-      <Modal open={openModal} onClose={() => setOpenModal(false)} />
+      <ChoosePopup />
     </>
   );
 }

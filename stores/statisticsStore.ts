@@ -2,17 +2,22 @@
 
 //Store
 import { ISecureVoteStore } from './index';
-import { getPollList } from '../services/getPollList';
+import { getPollList, pastPolls, presentPolls } from '../services/getPollList';
 import { showToast } from '../components/ToastMessage';
+import { ISinglePoll } from '../models/allModels';
 
 export interface IStatisticsStore {
-  allStatisticsList : any;
-  getAllStatisticsList : () => void;
+  allPolls : ISinglePoll[];
+  getAllPollList : () => void;
+  pastPolls : ISinglePoll[];
+  presentPolls : ISinglePoll[];
 }
 
 export const statisticsStore = (set: any, get: any): IStatisticsStore => ({
-  allStatisticsList: '',
-  getAllStatisticsList: async () => {
+  allPolls: [],
+  pastPolls : [],
+  presentPolls : [],
+  getAllPollList: async () => {
     const response = await getPollList();
     if(!response.success){
       showToast('error','Error','Transaction Error');
@@ -20,7 +25,7 @@ export const statisticsStore = (set: any, get: any): IStatisticsStore => ({
     }
     set((state: ISecureVoteStore) => ({
       ...state,
-      statisticsStore: { ...state.statisticsStore,   allStatisticsList : response.data},
+      statisticsStore: { ...state.statisticsStore,   allPolls : response.data , pastPolls : pastPolls(response.data as ISinglePoll[]), presentPolls : presentPolls(response.data as ISinglePoll[])},
     }));
   },
 });

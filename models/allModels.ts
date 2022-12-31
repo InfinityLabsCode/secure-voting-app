@@ -10,8 +10,16 @@ export interface ICreatePollResponse{
   transactionHash ? : any;
 }
 
-export interface IGetPollList{
+export interface IGetPollListResponse{
   success : boolean;
   errorMessage ? : string;
-  data? : any
+  data? : ISinglePoll[];
+}
+
+export interface ISinglePoll{
+  description : string;
+  name : string;
+  voteCounted : number;
+  voteEnded : boolean;
+  winningProposalName : string;
 }

@@ -1,7 +1,7 @@
 
 //Dependencies
 import { Contract } from "ethers";
-import { ICreatePollPayload, ICreatePollResponse } from "../models/createPoll";
+import { ICreatePollPayload, ICreatePollResponse } from "../models/allModels";
 
 //Service
 import { createSmartContractNode } from "./smartContract";

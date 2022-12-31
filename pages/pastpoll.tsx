@@ -9,17 +9,21 @@ import secureVoteStore from '../stores';
 //Componenets
 import Footer from '../components/Footer/index';
 import Header from '../components/Header/index';
-import Modal from '../components/Modal/modal';
-import Popup from '../components/Popup/popup';
+import VotingPopup from '../components/VoteModal/modal';
+import Popup from '../components/ChoosePopup/popup';
+import { ISinglePoll } from '../models/allModels';
+import Loader from '../components/Loader';
 
 
 
 export default function Pastpoll() {
-  const [openModal, setOpenModal] = useState(false);
   const router = useRouter();
   const isLogin = secureVoteStore((state) => state.authStore.isLogin);
-  const getAllStatisticsList = secureVoteStore((state) => state.statisticsStore.getAllStatisticsList);
+  const getAllPollList = secureVoteStore((state) => state.statisticsStore.getAllPollList);
+  const pastPolls = secureVoteStore((state) => state.statisticsStore.pastPolls);
   const setIsLoading = secureVoteStore((state) => state.uiStore.setIsLoading);
+  const isLoading = secureVoteStore((state) => state.uiStore.isLoading);
+  const setIsShowEndingPopup = secureVoteStore((state) => state.uiStore.setIsShowEndingPopup);
 
 
 
@@ -36,17 +40,15 @@ export default function Pastpoll() {
     (async()=>{
       if(isLogin){
         setIsLoading(true);
-        await getAllStatisticsList();
+        await getAllPollList();
         setIsLoading(false);
       }
     })();
-  },[isLogin,setIsLoading,getAllStatisticsList]);
+  },[isLogin,setIsLoading,getAllPollList]);
 
   return (
     <>
       <Header />
-      <Modal open={openModal} onClose={() => setOpenModal(false)} />
-      <Popup />
       <div className="flex-auto">
         <div className="max-w-3xl mx-auto pt-10 pb-12 px-8">
           <div className="bg-white mt-8 mobile:p-6 p-5 border-t-4 border-orange-300 overflow-visible rounded-md border-x border border-[#e5e7eb] border-t-[#0a0a2f]">
@@ -59,88 +61,28 @@ export default function Pastpoll() {
               </p>
             </div>
 
-            <ul
-              className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer"
-              onClick={() => setOpenModal(true)}
-            >
-              <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">CEO Election</li>
-              <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : 1205</li>
-              <li>
-                <ul className="space-x-20 content-center">
-                  <li className="flex text-[#079D0D] text-sm mt-1">
-                    <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#079D0D]"></span>
-                    Completed
-                  </li>
-                </ul>
-              </li>
-            </ul>
+            {!isLoading && pastPolls.length && pastPolls.map((item: ISinglePoll, index: number) => (
+              <ul onClick={() => setIsShowEndingPopup(true)} key={index} className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer">
+                <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">{item?.name}</li>
+                <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : {item?.voteCounted}</li>
+                <li>
+                  <ul className="space-x-20 content-center">
+                    <li className="flex text-[#079D0D] text-sm mt-1">
+                      <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#079D0D]"></span>
+                      Completed
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            ))}
 
-            <ul
-              className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer mt-4"
-              onClick={() => setOpenModal(true)}
-            >
-              <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">Manager Election</li>
-              <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : 1250</li>
-              <li>
-                <ul className="space-x-20 content-center">
-                  <li className="flex text-[#079D0D] text-sm mt-1">
-                    <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#079D0D]"></span>
-                    Completed
-                  </li>
-                </ul>
-              </li>
-            </ul>
-
-            <ul
-              className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer mt-4"
-              onClick={() => setOpenModal(true)}
-            >
-              <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">MD Election</li>
-              <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : 1850</li>
-              <li>
-                <ul className="space-x-20 content-center">
-                  <li className="flex text-[#079D0D] text-sm mt-1">
-                    <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#079D0D]"></span>
-                    Completed
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <ul
-              className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer mt-4"
-              onClick={() => setOpenModal(true)}
-            >
-              <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">Others Election</li>
-              <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : 1950</li>
-              <li>
-                <ul className="space-x-20 content-center">
-                  <li className="flex text-[#079D0D] text-sm mt-1">
-                    <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#079D0D]"></span>
-                    Completed
-                  </li>
-                </ul>
-              </li>
-            </ul>
-
-            <ul
-              className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer mt-4"
-              onClick={() => setOpenModal(true)}
-            >
-              <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">Others Election</li>
-              <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : 1950</li>
-              <li>
-                <ul className="space-x-20 content-center">
-                  <li className="flex text-[#079D0D] text-sm mt-1">
-                    <span className="w-2 h-2 mt-1 mr-2 rounded-full bg-[#079D0D]"></span>
-                    Completed
-                  </li>
-                </ul>
-              </li>
-            </ul>
+            {!isLoading && !pastPolls.length ? <span>No past poll available!</span> : ''}
           </div>
         </div>
       </div>
       <Footer />
+      <Popup />
+      <Loader />
     </>
   );
 }
