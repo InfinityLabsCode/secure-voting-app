@@ -9,6 +9,7 @@ import Header from '../components/Header/index';
 import { ISinglePoll } from '../models/allModels';
 import ChoosePopup from '../components/ChoosePopup/popup';
 import VotePopup from '../components/VoteModal/modal';
+import AddWalletAddressPopup from '../components/AddWalletAddressPopup';
 
 
 //Store
@@ -79,6 +80,7 @@ export default function Presentpoll() {
       <Footer />
       <ChoosePopup />
       <VotePopup />
+      <AddWalletAddressPopup />
     </>
   );
 }

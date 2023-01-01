@@ -7,6 +7,8 @@ import Footer from '../components/Footer/index';
 import Header from '../components/Header/index';
 import ChoosePopup from '../components/ChoosePopup/popup';
 import VotePopup from '../components/VoteModal/modal';
+import AddWalletAddressPopup from '../components/AddWalletAddressPopup';
+import ResultPopup from '../components/ResultPopup';
 
 //Store
 import secureVoteStore from '../stores';
@@ -23,6 +25,8 @@ export default function All() {
   const pastPolls = secureVoteStore((state) => state.statisticsStore.pastPolls);
   const presentPolls = secureVoteStore((state) => state.statisticsStore.presentPolls);
   const setIsShowChoosePopup = secureVoteStore((state) => state.uiStore.setIsShowChoosePopup);
+  const setIsShowEndingPopup = secureVoteStore((state) => state.uiStore.setIsShowEndingPopup);
+
 
 
 
@@ -60,7 +64,7 @@ export default function All() {
             </div>
 
             {!isLoading && pastPolls.length && pastPolls.map((item: ISinglePoll, index: number) => (
-              <ul key={index} className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer">
+              <ul onClick={() => setIsShowEndingPopup(true)} key={index} className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer">
                 <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">{item?.name}</li>
                 <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : {item?.voteCounted}</li>
                 <li>
@@ -107,6 +111,8 @@ export default function All() {
       <Loader />
       <ChoosePopup />
       <VotePopup />
+      <AddWalletAddressPopup />
+      <ResultPopup />
     </>
   );
 }

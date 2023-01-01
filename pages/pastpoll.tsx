@@ -7,13 +7,12 @@ import secureVoteStore from '../stores';
 
 //Componenets
 import Popup from '../components/ChoosePopup/popup';
-import Result from '../components/Result/result';
+import ResultPopup from '../components/ResultPopup/index';
 import Footer from '../components/Footer/index';
 import Header from '../components/Header/index';
 import Loader from '../components/Loader';
 import { ISinglePoll } from '../models/allModels';
-import Acces from '../components/Acces/acces';
-import Connect from '../components/Connect/connect';
+import AddWalletAddressPopup from '../components/AddWalletAddressPopup';
 
 export default function Pastpoll() {
   const router = useRouter();
@@ -43,9 +42,8 @@ export default function Pastpoll() {
   return (
     <>
       <Header />
-      <Result />
-      <Acces />
-      <Connect />
+      <ResultPopup />
+      <AddWalletAddressPopup />
       
       <div className="flex-auto">
         <div className="max-w-3xl mx-auto pt-10 pb-12 px-8">

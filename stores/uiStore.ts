@@ -12,6 +12,8 @@ export interface IUiStore {
   setIsShowVotePopup :(value : boolean) => void;
   isShowEndingPopup : boolean;
   setIsShowEndingPopup : (value : boolean) => void;
+  isShowAddWalletAddressPopup : boolean;
+  setIsShowAddWalletAddressPopup : (value : boolean) => void;
 }
 
 export const uiStore = (set: any, get: any): IUiStore => ({
@@ -20,6 +22,7 @@ export const uiStore = (set: any, get: any): IUiStore => ({
   isShowChoosePopup : false,
   isShowVotePopup : false,
   isShowEndingPopup : false,
+  isShowAddWalletAddressPopup : false,
   setIsShowVotingPopup: async (value : boolean) => {
     set((state: ISecureVoteStore) => ({
       ...state,
@@ -48,6 +51,12 @@ export const uiStore = (set: any, get: any): IUiStore => ({
     set((state: ISecureVoteStore) => ({
       ...state,
       uiStore: { ...state.uiStore, isShowEndingPopup : value },
+    }));
+  },
+  setIsShowAddWalletAddressPopup: (value : boolean) => {
+    set((state: ISecureVoteStore) => ({
+      ...state,
+      uiStore: { ...state.uiStore, isShowAddWalletAddressPopup : value },
     }));
   }
 });
