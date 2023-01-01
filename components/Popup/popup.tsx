@@ -15,13 +15,11 @@ const Popup = () => {
                 <button className="w-full mt-1 text-gray-800 text-right text-[#0A0A2F]">X</button>
               </div>
             </div>
-            <div className="pt-4 pb-2 flex-auto justify-center">
+            <div className="mt-6 pb-2 flex-auto justify-center">
               <div className="modal-body">
-                <ul className="list-decimal pl-5">
-                  <li className="desktop:text-base tablet:text-base	mobile:text-sm text-[#0A0A2F]">Vote</li>
-                  <li className="desktop:text-base tablet:text-base	mobile:text-sm mt-4 text-[#0A0A2F]">
-                    Stop Voting ( Only owner)
-                  </li>
+                <ul className="pl-5 flex flex-col leading-7">
+                  <li className="bg-green-500 max-w-fit px-8 py-2 rounded-[6px] hover:bg-green-600 cursor-pointer text-white -ml-5 mb-2">Vote</li>
+                  <li className="bg-red-500 max-w-fit px-4 py-2 rounded-[6px] hover:bg-red-600 cursor-pointer text-white mt-3 -ml-5">Stop Voting</li>                  
                 </ul>
               </div>
             </div>
