@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import Footer from '../components/Footer/index';
 import Header from '../components/Header/index';
 import ChoosePopup from '../components/ChoosePopup/popup';
+import VotePopup from '../components/VoteModal/modal';
 
 //Store
 import secureVoteStore from '../stores';
@@ -105,6 +106,7 @@ export default function All() {
       <Footer />
       <Loader />
       <ChoosePopup />
+      <VotePopup />
     </>
   );
 }

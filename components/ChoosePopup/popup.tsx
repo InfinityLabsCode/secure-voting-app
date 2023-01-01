@@ -7,6 +7,8 @@ import secureVoteStore from "../../stores";
 const Popup = () => {
   const isShowChoosePopup = secureVoteStore((state) => state.uiStore.isShowChoosePopup);
   const setIsShowChoosePopup = secureVoteStore((state) => state.uiStore.setIsShowChoosePopup);
+  const setIsShowVotePopup = secureVoteStore((state) => state.uiStore.setIsShowVotePopup);
+
 
   return (
     <>
@@ -22,13 +24,15 @@ const Popup = () => {
                   </h1>
                 </div>
                 <div className="modal-closs font-bold">
-                  <button className="w-full mt-1 text-gray-800 text-right text-[#0A0A2F]" onClick={() => setIsShowChoosePopup(false)}>X</button>
+                  <button className="w-full mt-1 text-gray-800 text-right text-[#0A0A2F]" onClick={() => setIsShowChoosePopup(false)}>                    
+                    <span>&#9587;</span>
+                  </button>
                 </div>
               </div>
               <div className="pt-4 pb-2 flex-auto justify-center">
                 <div className="modal-body">
                   <ul className="list-decimal pl-5">
-                    <li className="desktop:text-base tablet:text-base	mobile:text-sm text-[#0A0A2F]">Vote</li>
+                    <li onClick={()=> {setIsShowChoosePopup(false);setIsShowVotePopup(true);}} className="desktop:text-base tablet:text-base	mobile:text-sm text-[#0A0A2F]">Vote</li>
                     <li className="desktop:text-base tablet:text-base	mobile:text-sm mt-4 text-[#0A0A2F]">
                       Stop Voting ( Only owner)
                     </li>

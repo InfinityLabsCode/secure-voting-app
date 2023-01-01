@@ -8,6 +8,8 @@ import Footer from '../components/Footer/index';
 import Header from '../components/Header/index';
 import { ISinglePoll } from '../models/allModels';
 import ChoosePopup from '../components/ChoosePopup/popup';
+import VotePopup from '../components/VoteModal/modal';
+
 
 //Store
 import secureVoteStore from '../stores';
@@ -76,6 +78,7 @@ export default function Presentpoll() {
       </div>
       <Footer />
       <ChoosePopup />
+      <VotePopup />
     </>
   );
 }
