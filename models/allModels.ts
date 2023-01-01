@@ -23,3 +23,31 @@ export interface ISinglePoll{
   voteEnded : boolean;
   winningProposalName : string;
 }
+
+export interface IGiveVotePayload{
+  electionIndex : number;
+  candidateIndex : number;
+}
+
+export interface IGiveVoteResponse{
+  success : boolean;
+  errorMessage ? : string;
+  transactionHash ? : any;
+}
+
+export interface IGiveRightToVotePayload{
+  electionIndex : number;
+  voterAddress : string;
+}
+
+export interface IGiveRightToVoteResponse{
+  success : boolean;
+  errorMessage ? : string;
+  transactionHash ? : any;
+}
+
+export interface IEndingVotingResponse{
+  success : boolean;
+  errorMessage ? : string;
+  transactionHash ? : any;
+}
