@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 //Components
 import Footer from '../components/Footer/index';
 import Header from '../components/Header/index';
+import ChoosePopup from '../components/ChoosePopup/popup';
 
 //Store
 import secureVoteStore from '../stores';
@@ -20,6 +21,8 @@ export default function All() {
   const getAllPollList = secureVoteStore((state) => state.statisticsStore.getAllPollList);
   const pastPolls = secureVoteStore((state) => state.statisticsStore.pastPolls);
   const presentPolls = secureVoteStore((state) => state.statisticsStore.presentPolls);
+  const setIsShowChoosePopup = secureVoteStore((state) => state.uiStore.setIsShowChoosePopup);
+
 
 
   useEffect(
@@ -80,7 +83,7 @@ export default function All() {
             </div>
 
             {!isLoading && presentPolls.length && presentPolls.map((item: ISinglePoll, index: number) => (
-              <ul key={index} className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer">
+              <ul onClick={()=> setIsShowChoosePopup(true)} key={index} className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer">
                 <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">{item?.name}</li>
                 <li className="text-right mobile:text-left mobile:text-xs text-sm">User Voter : {item?.voteCounted}</li>
                 <li>
@@ -101,6 +104,7 @@ export default function All() {
       </div>
       <Footer />
       <Loader />
+      <ChoosePopup />
     </>
   );
 }
