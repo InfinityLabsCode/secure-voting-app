@@ -19,6 +19,8 @@ export default function Presentpoll() {
   const isLogin = secureVoteStore((state) => state.authStore.isLogin);
   const getAllPollList = secureVoteStore((state) => state.statisticsStore.getAllPollList);
   const presentPolls = secureVoteStore((state) => state.statisticsStore.presentPolls);
+  const setSelectedPoll = secureVoteStore((state) => state.statisticsStore.setSelectedPoll);
+
   const setIsLoading = secureVoteStore((state) => state.uiStore.setIsLoading);
   const isLoading = secureVoteStore((state) => state.uiStore.isLoading);
   const setIsShowChoosePopup = secureVoteStore((state) => state.uiStore.setIsShowChoosePopup);
@@ -53,12 +55,12 @@ export default function Presentpoll() {
             </div>
 
             {!isLoading &&
-              presentPolls.length &&
+              presentPolls.length > 0 &&
               presentPolls.map((item: ISinglePoll, index: number) => (
                 <ul
                   key={index}
                   className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer mb-4"
-                  onClick={() => setIsShowChoosePopup(true)}
+                  onClick={() => {setSelectedPoll(item);setIsShowChoosePopup(true)}}
                 >
                   <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">{item?.name}</li>
                   <li className="text-right mobile:text-left mobile:text-xs text-sm">
@@ -74,7 +76,7 @@ export default function Presentpoll() {
                   </li>
                 </ul>
               ))}
-            {!isLoading && !presentPolls.length ? <span>No present poll available!</span> : ''}
+            {!isLoading && !presentPolls.length && <span>No present poll available!</span> }
           </div>
         </div>
       </div>

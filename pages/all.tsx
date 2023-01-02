@@ -23,8 +23,10 @@ export default function All() {
   const getAllPollList = secureVoteStore((state) => state.statisticsStore.getAllPollList);
   const pastPolls = secureVoteStore((state) => state.statisticsStore.pastPolls);
   const presentPolls = secureVoteStore((state) => state.statisticsStore.presentPolls);
+  const setSelectedPoll = secureVoteStore((state) => state.statisticsStore.setSelectedPoll);
   const setIsShowChoosePopup = secureVoteStore((state) => state.uiStore.setIsShowChoosePopup);
   const setIsShowEndingPopup = secureVoteStore((state) => state.uiStore.setIsShowEndingPopup);
+
 
   useEffect(() => {
     if (!isLogin) {
@@ -54,10 +56,10 @@ export default function All() {
               <p className="mt-1 text-sm text-[#0A0A2F]">Below are the Past Polls created by the administrators:</p>
             </div>
             {!isLoading &&
-              pastPolls.length &&
+              pastPolls.length > 0 &&
               pastPolls.map((item: ISinglePoll, index: number) => (
                 <ul
-                  onClick={() => setIsShowEndingPopup(true)}
+                  onClick={() => {setSelectedPoll(item);setIsShowEndingPopup(true);}}
                   key={index}
                   className="max-w-2xl mx-auto p-4 mb-4 rounded-md border border-[#e5e7eb] cursor-pointer"
                 >
@@ -75,7 +77,7 @@ export default function All() {
                   </li>
                 </ul>
               ))}
-            {!isLoading && !pastPolls.length ? <span>No past poll available!</span> : ''}
+            {!isLoading && !pastPolls.length && <span>No past poll available!</span>}
             <div className="poll-title my-4">
               <h1 className="text-2xl font-bold leading-7 mobile:text-xl mobile:truncate text-[#0A0A2F]">
                 Present Polls
@@ -83,10 +85,10 @@ export default function All() {
               <p className="mt-1 text-sm text-[#0A0A2F]">Below are the Present polls created by the administrators:</p>
             </div>
             {!isLoading &&
-              presentPolls.length &&
+              presentPolls.length > 0 &&
               presentPolls.map((item: ISinglePoll, index: number) => (
                 <ul
-                  onClick={() => setIsShowChoosePopup(true)}
+                  onClick={() => {setSelectedPoll(item);setIsShowChoosePopup(true);}}
                   key={index}
                   className="max-w-2xl mx-auto p-4 mb-4 rounded-md border border-[#e5e7eb] cursor-pointer"
                 >
@@ -104,7 +106,7 @@ export default function All() {
                   </li>
                 </ul>
               ))}
-            {!isLoading && !presentPolls.length ? <span>No present poll available!</span> : ''}
+            {!isLoading && !presentPolls.length  && <span>No present poll available!</span>}
           </div>
         </div>
       </div>

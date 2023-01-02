@@ -1,13 +1,33 @@
 //Dependencies
 
 //Store
+import { endingVoting } from '../../services/endingVoting';
 import secureVoteStore from '../../stores';
+import { showToast, toastUpdate } from '../ToastMessage';
 
 const Popup = () => {
   const isShowChoosePopup = secureVoteStore((state) => state.uiStore.isShowChoosePopup);
   const setIsShowChoosePopup = secureVoteStore((state) => state.uiStore.setIsShowChoosePopup);
   const setIsShowVotePopup = secureVoteStore((state) => state.uiStore.setIsShowVotePopup);
   const setIsShowAddWalletAddressPopup = secureVoteStore((state) => state.uiStore.setIsShowAddWalletAddressPopup);
+  const setIsLoading = secureVoteStore((state) => state.uiStore.setIsLoading);
+  const selectedPoll = secureVoteStore((state) => state.statisticsStore.selectedPoll);
+
+
+  const stopVotingHandler = async () =>{
+    setIsLoading(true);
+    const toastId = 'stopVote';
+    showToast('processing','Processing','Please wait..',toastId);
+    const response = await endingVoting(selectedPoll?.id as number);
+    if(!response.success){
+      toastUpdate(toastId,'error','Error','Transaction Error!');
+      setIsLoading(false);
+      return;
+    }
+    toastUpdate(toastId,'success','Success','Stop voting is initiated!');
+    setIsShowChoosePopup(false);
+    setIsLoading(false);
+  }
 
   return (
     <>
@@ -44,9 +64,7 @@ const Popup = () => {
                       Vote
                     </button>
                     <button
-                      onClick={() => {
-                        setIsShowChoosePopup(false);
-                      }}
+                      onClick={() => stopVotingHandler()}
                       className="w-1/2 bg-red-500 hover:bg-red-600 mt-6 py-3 rounded-[6px] mobile:text-sm text-white cursor-pointer"
                     >
                       Stop Voting

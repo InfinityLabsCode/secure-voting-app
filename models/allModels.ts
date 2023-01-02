@@ -17,6 +17,7 @@ export interface IGetPollListResponse{
 }
 
 export interface ISinglePoll{
+  id : number;
   description : string;
   name : string;
   voteCounted : number;
@@ -50,4 +51,10 @@ export interface IEndingVotingResponse{
   success : boolean;
   errorMessage ? : string;
   transactionHash ? : any;
+}
+
+export interface IGetProposalsResponse{
+  success : boolean;
+  errorMessage ? : string;
+  data ? : string[];
 }

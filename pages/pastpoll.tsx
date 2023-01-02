@@ -18,6 +18,8 @@ export default function Pastpoll() {
   const router = useRouter();
   const isLogin = secureVoteStore((state) => state.authStore.isLogin);
   const getAllPollList = secureVoteStore((state) => state.statisticsStore.getAllPollList);
+  const setSelectedPoll = secureVoteStore((state) => state.statisticsStore.setSelectedPoll);
+
   const pastPolls = secureVoteStore((state) => state.statisticsStore.pastPolls);
   const setIsLoading = secureVoteStore((state) => state.uiStore.setIsLoading);
   const isLoading = secureVoteStore((state) => state.uiStore.isLoading);
@@ -58,10 +60,10 @@ export default function Pastpoll() {
             </div>
 
             {!isLoading &&
-              pastPolls.length &&
+              pastPolls.length > 0 &&
               pastPolls.map((item: ISinglePoll, index: number) => (
                 <ul
-                  onClick={() => setIsShowEndingPopup(true)}
+                  onClick={() => {setSelectedPoll(item);setIsShowEndingPopup(true)}}
                   key={index}
                   className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer mb-4"
                 >
@@ -80,7 +82,7 @@ export default function Pastpoll() {
                 </ul>
               ))}
 
-            {!isLoading && !pastPolls.length ? <span>No past poll available!</span> : ''}
+            {!isLoading && !pastPolls.length && <span>No past poll available!</span>}
           </div>
         </div>
       </div>

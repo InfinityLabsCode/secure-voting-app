@@ -4,6 +4,7 @@ import secureVoteStore from "../../stores";
 const ResultPopup = () => {
   const isShowEndingPopup = secureVoteStore((state) => state.uiStore.isShowEndingPopup);
   const setIsShowEndingPopup = secureVoteStore((state) => state.uiStore.setIsShowEndingPopup);
+  const selectedPoll = secureVoteStore((state) => state.statisticsStore.selectedPoll);
 
   return (
     <>
@@ -28,7 +29,7 @@ const ResultPopup = () => {
                 <div className="modal-body">
                   <ul className="leading-7">
                     <li>
-                      Winning proposal :- <span>Anik</span>
+                      Winning proposal :- <span>{selectedPoll?.winningProposalName}</span>
                     </li>
                   </ul>
                 </div>

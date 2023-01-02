@@ -9,9 +9,8 @@ import { createSmartContractNode } from "./smartContract";
 const processData =  (data : any) : ISinglePoll[] => {
   let processedList :ISinglePoll[] = []; 
   for(var i=0; i<data.length; i++){
-    processedList.push({name : data[i].name, description : data[i].description,voteCounted : Number(BigNumber.from(data[i].voteCounted)),voteEnded : data[i].voteEnded,winningProposalName : data[i].winningProposalName});
+    processedList.push({id : i ,name : data[i].name, description : data[i].description,voteCounted : Number(BigNumber.from(data[i].voteCounted)),voteEnded : data[i].voteEnded,winningProposalName : data[i].winningProposalName});
   }
-  console.log(processedList);
   return processedList;
 } 
 

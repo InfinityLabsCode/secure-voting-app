@@ -1,11 +1,50 @@
 //Dependencies
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 //Store
 import secureVoteStore from '../../stores';
 
+//Service
+import { getProposalList } from '../../services/getProposalList';
+import { showToast, toastUpdate } from '../ToastMessage';
+import { giveVote } from '../../services/giveVote';
+
 const Modal = () => {
+  const router = useRouter();
+  const [proposals, setProposals] = useState<string[]>([]);
   const isShowVotePopup = secureVoteStore((state) => state.uiStore.isShowVotePopup);
   const setIsShowVotePopup = secureVoteStore((state) => state.uiStore.setIsShowVotePopup);
+  const setIsLoading = secureVoteStore((state) => state.uiStore.setIsLoading);
+  const selectedPoll = secureVoteStore((state) => state.statisticsStore.selectedPoll);
+
+  useEffect(() => {
+    (async () => {
+      setIsLoading(true);
+      const response = await getProposalList(selectedPoll?.id as number);
+      if (!response.success) {
+        setIsLoading(false);
+        return;
+      }
+      setProposals(response.data as string[]);
+      setIsLoading(false);
+    })();
+  }, [router, selectedPoll?.id, setIsLoading]);
+
+  const giveVoteHandler = async (index : number) =>{
+    setIsLoading(true);
+    const toastId = 'giveVote';
+    showToast('processing','Processing','Please wait..',toastId);
+    const response = await giveVote({electionIndex : selectedPoll?.id as number, candidateIndex : index});
+    if(!response.success){
+      toastUpdate(toastId,'error','Error','Transaction Error!');
+      setIsLoading(false);
+      return;
+    }
+    toastUpdate(toastId,'success','Success','Your vote is initiated!');
+    setIsShowVotePopup(false);
+    setIsLoading(false);
+  }
 
   return (
     <>
@@ -37,89 +76,28 @@ const Modal = () => {
               <div className="pt-4 pb-2 flex-auto justify-center">
                 <div className="modal-body">
                   <p>Proposals : </p>
-                  <ul className="list-decimal pl-5 overflow-auto h-72">
-                    <li>
-                      <ul className="flex flex-auto justify-between mt-4">
-                        <li>Nahid</li>
+                  <ul className="list-decimal pl-5 overflow-auto h-50">
+                    {proposals.map((item: string, index: number) => (
+                      <div key={index}>
                         <li>
-                          <a
-                            href="#_"
-                            className="inline-flex items-center justify-center h-11 px-8 font-medium tracking-wide text-white transition duration-200 bg-green-500 rounded-lg hover:bg-green-400 focus:shadow-outline focus:outline-none"
-                          >
-                            Vote
-                          </a>
+                          <ul className="flex flex-auto justify-between mt-4 items-center">
+                            <li>{item}</li>
+                            <li>
+                              <a
+                                onClick={() => giveVoteHandler(index)}
+                                className="cursor-pointer inline-flex items-center justify-center h-11 px-8 font-medium tracking-wide text-white transition duration-200 bg-green-500 rounded-lg hover:bg-green-400 focus:shadow-outline focus:outline-none"
+                              >
+                                Vote
+                              </a>
+                            </li>
+                          </ul>
                         </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <ul className="flex flex-auto justify-between mt-5">
-                        <li>Imran</li>
-                        <li>
-                          <a
-                            href="#_"
-                            className="inline-flex items-center justify-center h-11 px-8 font-medium tracking-wide text-white transition duration-200 bg-green-500 rounded-lg hover:bg-green-400 focus:shadow-outline focus:outline-none"
-                          >
-                            Vote
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <ul className="flex flex-auto justify-between mt-4">
-                        <li>Nahid</li>
-                        <li>
-                          <a
-                            href="#_"
-                            className="inline-flex items-center justify-center h-11 px-8 font-medium tracking-wide text-white transition duration-200 bg-green-500 rounded-lg hover:bg-green-400 focus:shadow-outline focus:outline-none"
-                          >
-                            Vote
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <ul className="flex flex-auto justify-between mt-5">
-                        <li>Imran</li>
-                        <li>
-                          <a
-                            href="#_"
-                            className="inline-flex items-center justify-center h-11 px-8 font-medium tracking-wide text-white transition duration-200 bg-green-500 rounded-lg hover:bg-green-400 focus:shadow-outline focus:outline-none"
-                          >
-                            Vote
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <ul className="flex flex-auto justify-between mt-4">
-                        <li>Nahid</li>
-                        <li>
-                          <a
-                            href="#_"
-                            className="inline-flex items-center justify-center h-11 px-8 font-medium tracking-wide text-white transition duration-200 bg-green-500 rounded-lg hover:bg-green-400 focus:shadow-outline focus:outline-none"
-                          >
-                            Vote
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <ul className="flex flex-auto justify-between mt-5">
-                        <li>Imran</li>
-                        <li>
-                          <a
-                            href="#_"
-                            className="inline-flex items-center justify-center h-11 px-8 font-medium tracking-wide text-white transition duration-200 bg-green-500 rounded-lg hover:bg-green-400 focus:shadow-outline focus:outline-none"
-                          >
-                            Vote
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
+                      </div>
+                    ))}
                   </ul>
                   <div className="total-voted mt-6 border-t pt-6">
                     <p>
-                      User Voted : <span>1020</span>
+                      User Voted : <span>{selectedPoll?.voteCounted}</span>
                     </p>
                   </div>
                 </div>
