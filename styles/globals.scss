@@ -11,10 +11,18 @@
   font-family: 'PPNeueMachinaBold';
   src: url('/assets/fonts/PPN/PPNeueMachina-PlainUltrabold.otf');
 }
-
+html{
+  height: 100%;
+  box-sizing: border-box;
+}
 body {
   font-family: 'PPNeueMachina';
   background-color: #F9FAFB;
+  position: relative;
+  margin: 0;
+  min-height:100%;
+  box-sizing: inherit;
+  padding-bottom: 50px;
 }
 .login-box {
   box-shadow: 0 4px 40px #0a0a2f;

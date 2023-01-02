@@ -6,13 +6,13 @@ import { useEffect } from 'react';
 import secureVoteStore from '../stores';
 
 //Componenets
+import AddWalletAddressPopup from '../components/AddWalletAddressPopup';
 import Popup from '../components/ChoosePopup/popup';
-import ResultPopup from '../components/ResultPopup/index';
 import Footer from '../components/Footer/index';
 import Header from '../components/Header/index';
 import Loader from '../components/Loader';
+import ResultPopup from '../components/ResultPopup/index';
 import { ISinglePoll } from '../models/allModels';
-import AddWalletAddressPopup from '../components/AddWalletAddressPopup';
 
 export default function Pastpoll() {
   const router = useRouter();
@@ -44,10 +44,10 @@ export default function Pastpoll() {
       <Header />
       <ResultPopup />
       <AddWalletAddressPopup />
-      
+
       <div className="flex-auto">
         <div className="max-w-3xl mx-auto pt-10 pb-12 px-8">
-          <div className="bg-white mt-8 mobile:p-6 p-5 border-t-4 border-orange-300 overflow-visible rounded-md border-x border border-[#e5e7eb] border-t-[#0a0a2f]">
+          <div className="bg-white mt-8 mobile:p-6 p-5 border-t-4 border-orange-300 overflow-visible rounded-md border-x border border-[#e5e7eb] border-t-[#0a0a2f] mb-20">
             <div className="poll-title mb-4">
               <h1 className="text-2xl font-bold leading-7 mobile:text-xl mobile:truncate text-[#0A0A2F] ">
                 Past Polls
@@ -63,7 +63,7 @@ export default function Pastpoll() {
                 <ul
                   onClick={() => setIsShowEndingPopup(true)}
                   key={index}
-                  className="max-w-2xl mx-auto p-4  rounded-md border border-[#e5e7eb] cursor-pointer"
+                  className="max-w-2xl mx-auto p-4 rounded-md border border-[#e5e7eb] cursor-pointer mb-4"
                 >
                   <li className="text-base text-[#0A0A2F] mobile:text-lg font-bold">{item?.name}</li>
                   <li className="text-right mobile:text-left mobile:text-xs text-sm">
