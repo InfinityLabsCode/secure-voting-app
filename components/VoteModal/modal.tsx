@@ -37,10 +37,10 @@ const Modal = () => {
               <div className="pt-4 pb-2 flex-auto justify-center">
                 <div className="modal-body">
                   <p>Proposals : </p>
-                  <ul className="list-decimal pl-5 overflow-auto h-72">
-                    <li>
-                      <ul className="flex flex-auto justify-between mt-4">
-                        <li>Nahid</li>
+                  <ul className="list-decimal pl-5 overflow-auto h-72 py-3">
+                    <li className="my-3">
+                      <ul className="flex justify-between content-baseline">
+                        <li className="inline-flex items-center justify-center h-11 font-medium">Nahid</li>
                         <li>
                           <a
                             href="#_"
@@ -51,9 +51,9 @@ const Modal = () => {
                         </li>
                       </ul>
                     </li>
-                    <li>
-                      <ul className="flex flex-auto justify-between mt-5">
-                        <li>Imran</li>
+                    <li className="my-3">
+                      <ul className="flex justify-between content-baseline">
+                        <li className="inline-flex items-center justify-center h-11 font-medium">Imran</li>
                         <li>
                           <a
                             href="#_"
@@ -64,9 +64,10 @@ const Modal = () => {
                         </li>
                       </ul>
                     </li>
-                    <li>
-                      <ul className="flex flex-auto justify-between mt-4">
-                        <li>Nahid</li>
+
+                    <li className="my-3">
+                      <ul className="flex justify-between content-baseline">
+                        <li className="inline-flex items-center justify-center h-11 font-medium">Nahid</li>
                         <li>
                           <a
                             href="#_"
@@ -77,9 +78,10 @@ const Modal = () => {
                         </li>
                       </ul>
                     </li>
-                    <li>
-                      <ul className="flex flex-auto justify-between mt-5">
-                        <li>Imran</li>
+
+                    <li className="my-3">
+                      <ul className="flex justify-between content-baseline">
+                        <li className="inline-flex items-center justify-center h-11 font-medium">Imran</li>
                         <li>
                           <a
                             href="#_"
@@ -90,9 +92,10 @@ const Modal = () => {
                         </li>
                       </ul>
                     </li>
-                    <li>
-                      <ul className="flex flex-auto justify-between mt-4">
-                        <li>Nahid</li>
+
+                    <li className="my-3">
+                      <ul className="flex justify-between content-baseline">
+                        <li className="inline-flex items-center justify-center h-11 font-medium">Nahid</li>
                         <li>
                           <a
                             href="#_"
@@ -103,9 +106,9 @@ const Modal = () => {
                         </li>
                       </ul>
                     </li>
-                    <li>
-                      <ul className="flex flex-auto justify-between mt-5">
-                        <li>Imran</li>
+                    <li className="my-3">
+                      <ul className="flex justify-between content-baseline">
+                        <li className="inline-flex items-center justify-center h-11 font-medium">Imran</li>
                         <li>
                           <a
                             href="#_"
