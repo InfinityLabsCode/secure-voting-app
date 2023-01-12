@@ -31,20 +31,20 @@ const Modal = () => {
     })();
   }, [router, selectedPoll?.id, setIsLoading]);
 
-  const giveVoteHandler = async (index : number) =>{
+  const giveVoteHandler = async (index: number) => {
     setIsLoading(true);
     const toastId = 'giveVote';
-    showToast('processing','Processing','Please wait..',toastId);
-    const response = await giveVote({electionIndex : selectedPoll?.id as number, candidateIndex : index});
-    if(!response.success){
-      toastUpdate(toastId,'error','Error','Transaction Error!');
+    showToast('processing', 'Processing', 'Please wait..', toastId);
+    const response = await giveVote({ electionIndex: selectedPoll?.id as number, candidateIndex: index });
+    if (!response.success) {
+      toastUpdate(toastId, 'error', 'Error', 'Transaction Error!');
       setIsLoading(false);
       return;
     }
-    toastUpdate(toastId,'success','Success','Your vote is initiated!');
+    toastUpdate(toastId, 'success', 'Success', 'Your vote is initiated!');
     setIsShowVotePopup(false);
     setIsLoading(false);
-  }
+  };
 
   return (
     <>
@@ -61,11 +61,9 @@ const Modal = () => {
               <div className="flex justify-between border-b">
                 <div className="modal-title mb-4">
                   <h1 className="text-xl font-bold leading-7 mobile:text-base mobile:truncate text-[#0A0A2F] ">
-                    CEO Election
+                    {selectedPoll?.name}
                   </h1>
-                  <p className="mt-1 text-sm mobile:text-xs text-[#0A0A2F]">
-                    The Employees will choose their CEO for the company:
-                  </p>
+                  <p className="mt-1 text-sm mobile:text-xs text-[#0A0A2F]">{selectedPoll?.description}</p>
                 </div>
                 <div className="modal-closs font-bold">
                   <button className="w-full mt-1 text-gray-800 text-right" onClick={() => setIsShowVotePopup(false)}>
